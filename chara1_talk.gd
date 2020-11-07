@@ -10,7 +10,6 @@ func _on_chara1_talk_body_entered(body):
 func _on_chara1_talk_body_exited(body):
 	if body.name == "IgorUgor":
 		$Label.hide()
-		$kosheynot.hide()
 		can_interact = false
 		$Label.text = "Поговорить"
 
