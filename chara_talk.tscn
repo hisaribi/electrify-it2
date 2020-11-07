@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/19924.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://chara1_talk.gd" type="Script" id=2]
+[ext_resource path="res://assets/chara1.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 161.951, 151.006 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = ExtResource( 1 )
+
+[node name="chara_talk" type="Area2D"]
+position = Vector2( 881.259, 371.676 )
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -3.36328, -0.000183105 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -1.68127, 1.68182 )
+shape = SubResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+visible = false
+margin_left = -90.851
+margin_top = -288.924
+margin_right = 100.149
+margin_bottom = -252.924
+custom_fonts/font = SubResource( 2 )
+text = "Поговорить"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="body_entered" from="." to="." method="_on_chara1_talk_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_chara1_talk_body_exited"]
+[connection signal="body_shape_entered" from="." to="." method="_on_chara1_talk_body_shape_entered"]
+[connection signal="body_shape_exited" from="." to="." method="_on_chara1_talk_body_shape_exited"]
