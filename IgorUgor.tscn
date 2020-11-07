@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://IgorUgor.gd" type="Script" id=1]
 [ext_resource path="res://assets/mainchara.png" type="Texture" id=2]
 [ext_resource path="res://Camera2D.gd" type="Script" id=3]
+[ext_resource path="res://dialogbox.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 109.782, 242.022 )
@@ -24,3 +25,14 @@ texture = ExtResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 593.842, 279.614 )
 shape = SubResource( 1 )
+
+[node name="dialogbox" parent="." instance=ExtResource( 4 )]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 191.331
+margin_top = 360.732
+margin_right = 711.331
+margin_bottom = 529.732

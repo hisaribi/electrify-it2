@@ -10,9 +10,16 @@ func _on_chara1_talk_body_entered(body):
 func _on_chara1_talk_body_exited(body):
 	if body.name == "IgorUgor":
 		$Label.hide()
+		$kosheynot.hide()
 		can_interact = false
 		$Label.text = "Поговорить"
 
 func _input(chara1_talk):
 	if Input.is_action_just_pressed("interact") and can_interact == true:
-		$Label.text = "Работай"
+		$Label.show()
+		$Label.text = "За работу"
+
+
+#func _on_koshey_ready():
+#	if Input.is_action_just_pressed("interact") and can_interact == true:
+#		$kosheynot.show()

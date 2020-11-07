@@ -1,11 +1,31 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/19924.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/bg.png" type="Texture" id=2]
+[ext_resource path="res://assets/idle.png" type="Texture" id=3]
+[ext_resource path="res://dialogbox.gd" type="Script" id=4]
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=1]
 size = 26
+extra_spacing_char = -2
+extra_spacing_space = -6
 font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "IDLE"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 5.0 ]
+}
 
 [node name="dialogbox" type="Control"]
 margin_left = 216.244
@@ -13,6 +33,7 @@ margin_top = 491.221
 margin_right = 736.244
 margin_bottom = 660.221
 rect_scale = Vector2( 1.65967, 1.10255 )
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": false
@@ -31,6 +52,21 @@ margin_left = 15.0
 margin_top = 15.0
 margin_right = -15.0
 margin_bottom = -15.0
-custom_fonts/normal_font = SubResource( 6 )
+custom_fonts/normal_font = SubResource( 1 )
 bbcode_text = "Ты воняешь"
 text = "Ты воняешь"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="idle" type="Sprite" parent="."]
+position = Vector2( 482.284, 120.406 )
+scale = Vector2( 0.602529, 0.906988 )
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="idle"]
+autoplay = "IDLE"
+anims/IDLE = SubResource( 2 )
+
+[node name="Tween" type="Tween" parent="."]
+[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]
